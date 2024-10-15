@@ -18,10 +18,6 @@ export const contactsSlice = createSlice({
   }
 })
 
-// state.items = state.items.filter((item) =>
-//   item.name.toLowerCase().includes(action.payload.toLowerCase())
-// )
-
 export const selectContacts = (state) => state.contacts.items
 
 export const { addContact, deleteContact } = contactsSlice.actions
