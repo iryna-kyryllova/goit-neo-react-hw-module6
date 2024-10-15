@@ -14,9 +14,13 @@ const ContactList = () => {
 
   return (
     <ul className={styles.contacts}>
-      {items.map((contact) => (
-        <Contact key={contact.id} data={contact} deleteContact={deleteContactHandler} />
-      ))}
+      {items.length > 0 ? (
+        items.map((contact) => (
+          <Contact key={contact.id} data={contact} deleteContact={deleteContactHandler} />
+        ))
+      ) : (
+        <div>No contacts.</div>
+      )}
     </ul>
   )
 }
