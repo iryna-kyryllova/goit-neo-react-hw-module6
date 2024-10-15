@@ -24,20 +24,16 @@ const App = () => {
     setContacts((prevState) => [...prevState, newContact])
   }
 
-  const deleteContact = (id) => {
-    setContacts((prevState) => prevState.filter((contact) => contact.id !== id))
-  }
-
-  const filteredContacts = contacts.filter(({ name }) =>
-    name.toLowerCase().includes(search.toLocaleLowerCase())
-  )
+  // const filteredContacts = contacts.filter(({ name }) =>
+  //   name.toLowerCase().includes(search.toLocaleLowerCase())
+  // )
 
   return (
     <div className='container'>
       <h1>Phonebook</h1>
       <ContactForm addContact={addContact} />
       <SearchBox search={search} setSearch={setSearch} />
-      <ContactList contacts={filteredContacts} deleteContact={deleteContact} />
+      <ContactList />
     </div>
   )
 }
