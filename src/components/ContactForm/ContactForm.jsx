@@ -1,11 +1,15 @@
 import { useId } from 'react'
+import { useDispatch } from 'react-redux'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
+import { nanoid } from 'nanoid'
+import { addContact } from '../../redux/contactsSlice'
 import styles from './ContactForm.module.css'
 
-const ContactForm = ({ addContact }) => {
+const ContactForm = () => {
   const nameId = useId()
   const numberId = useId()
+  const dispatch = useDispatch()
 
   const ContactSchema = Yup.object().shape({
     name: Yup.string().min(3, 'Too short!').max(50, 'Too long!').required('The field is required'),
@@ -13,7 +17,11 @@ const ContactForm = ({ addContact }) => {
   })
 
   const handleSubmit = (values, actions) => {
-    addContact(values)
+    const newContact = {
+      ...values,
+      id: nanoid()
+    }
+    dispatch(addContact(newContact))
     actions.resetForm()
   }
 

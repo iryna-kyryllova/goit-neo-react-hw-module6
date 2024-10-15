@@ -10,10 +10,7 @@ export const contactsSlice = createSlice({
   initialState,
   reducers: {
     addContact: (state, action) => {
-      // state.value += 1
-      console.log('addContact')
-      console.log('state', state.items)
-      console.log('action', action)
+      state.items.push(action.payload)
     },
     deleteContact: (state, action) => {
       state.items = state.items.filter((item) => item.id !== action.payload)
